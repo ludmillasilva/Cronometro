@@ -3,9 +3,6 @@ package com.ludmilla.cronometro
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
-import android.view.LayoutInflater
-import android.widget.Button
-import android.widget.Chronometer
 import com.ludmilla.cronometro.databinding.ActivityMainBinding
 // ================== SYNTHETICS =======================
 //Atençao: O SYNTHETICS É CONSIDERADO COMO OBSOLETO
@@ -63,34 +60,34 @@ class MainActivity : AppCompatActivity() {
 */
 
        binding.btnStart.setOnClickListener {
-            IniciarCronometro()
+            iniciarCronometro()
         }
 
         binding.btnPause.setOnClickListener {
-            PausarCronometro()
+            pausarCronometro()
         }
 
         binding.btnZero.setOnClickListener {
-            ZerarCronometro()
+            zerarCronometro()
         }
 
     }
 
-    private fun IniciarCronometro() {
+    private fun iniciarCronometro() {
         if (!running) {
             binding.chronometer.base = SystemClock.elapsedRealtime() - pause
             binding.chronometer.start()
             running = true
         }
     }
-    private fun PausarCronometro(){
+    private fun pausarCronometro(){
         if(running){
         binding.chronometer.stop()
         pause = SystemClock.elapsedRealtime() - binding.chronometer.base
         running = false
         }
     }
-    private fun ZerarCronometro(){
+    private fun zerarCronometro(){
         binding.chronometer.base = SystemClock.elapsedRealtime()
         pause = 0
     }
